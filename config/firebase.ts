@@ -1,10 +1,17 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, setLogLevel } from 'firebase/firestore';
 import fs from 'fs';
 import path from 'path';
 
 let db: any = null;
 let firebaseApp: any = null;
+
+// Suppress Firestore verbose debug, info, and warning logging (such as gRPC connection-idle disconnect streams) to keep logs pristine and clean.
+try {
+  setLogLevel('error');
+} catch (e) {
+  console.warn("Failed to set Firestore log-level:", e);
+}
 
 try {
   const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
