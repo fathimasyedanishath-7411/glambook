@@ -1,0 +1,6 @@
+{
+  "name": "GlamBook Artist Finder",
+  "description": "A booking, pricing, and portfolio platform for makeup artists, hairstylists, and beauty professionals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

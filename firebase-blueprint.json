@@ -1,0 +1,134 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a user of GlamBook (customer, artist, or admin)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "profileImage": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role", "createdAt"]
+    },
+    "Artist": {
+      "title": "Artist",
+      "description": "Represents an artist profile in GlamBook",
+      "type": "object",
+      "properties": {
+        "artistId": { "type": "string" },
+        "category": { "type": "string" },
+        "city": { "type": "string" },
+        "experience": { "type": "integer" },
+        "pricing": { "type": "number" },
+        "rating": { "type": "number" },
+        "availability": { "type": "array" },
+        "verified": { "type": "boolean" }
+      },
+      "required": ["artistId", "category", "city", "experience", "pricing", "rating", "availability", "verified"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Represents a service offered by an artist",
+      "type": "object",
+      "properties": {
+        "serviceId": { "type": "string" },
+        "artistId": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "price": { "type": "number" }
+      },
+      "required": ["serviceId", "artistId", "serviceName", "price"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Represents an artist appointment booking",
+      "type": "object",
+      "properties": {
+        "bookingId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "artistId": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "bookingDate": { "type": "string" },
+        "bookingTime": { "type": "string" },
+        "bookingStatus": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "notes": { "type": "string" }
+      },
+      "required": ["bookingId", "customerId", "artistId", "serviceId", "bookingDate", "bookingTime", "bookingStatus", "totalAmount"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Represents an artist review sent by a customer",
+      "type": "object",
+      "properties": {
+        "reviewId": { "type": "string" },
+        "artistId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["reviewId", "artistId", "customerId", "rating", "comment", "createdAt"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Represents a payment transaction for a booking",
+      "type": "object",
+      "properties": {
+        "paymentId": { "type": "string" },
+        "bookingId": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" }
+      },
+      "required": ["paymentId", "bookingId", "amount", "paymentMethod", "paymentStatus"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Represents a system or user-specific notification",
+      "type": "object",
+      "properties": {
+        "notificationId": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "readStatus": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["notificationId", "userId", "title", "message", "readStatus", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of user account entities"
+    },
+    "/artists/{artistId}": {
+      "schema": "Artist",
+      "description": "Collection of artist portfolios"
+    },
+    "/services/{serviceId}": {
+      "schema": "Service",
+      "description": "Collection of artist services"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Collection of appointment bookings"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Collection of customer reviews for artists"
+    },
+    "/payments/{paymentId}": {
+      "schema": "Payment",
+      "description": "Collection of transaction records"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "Collection of push and poll notifications"
+    }
+  }
+}
